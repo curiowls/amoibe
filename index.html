@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpeg" href="assets/logo-icon-dark.jpg">
   <title>Amoibe — AI Agents That Know Where You're Going</title>
   <meta name="description" content="Amoibe connects professionals and companies through AI agents that understand future trajectories, not just past keywords. Discover synergies. Make collaboration frictionless.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,15 +58,15 @@
     }
 
     .logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--color-text);
       text-decoration: none;
-      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
     }
 
-    .logo span { color: var(--color-accent-light); }
+    .logo img {
+      height: 32px;
+      width: auto;
+    }
 
     .nav-links {
       display: flex;
@@ -589,7 +590,7 @@
 
   <!-- Nav -->
   <nav>
-    <a href="#" class="logo">amoibe<span>.</span></a>
+    <a href="#" class="logo"><img src="assets/logo-wordmark.jpg" alt="Amoibe"></a>
     <ul class="nav-links">
       <li><a href="#how">How It Works</a></li>
       <li><a href="#difference">Why Different</a></li>
