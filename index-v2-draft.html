@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><path d='M5 55 L25 5 L45 55 L55 55' stroke='%2304D4DB' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <title>Amoibe — AI Agents That Know Where You're Going</title>
+  <meta name="description" content="Amoibe connects professionals and companies through AI agents that understand future trajectories, not just past keywords. Discover synergies. Make collaboration frictionless.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0a0a0f;
+      --color-bg-alt: #12121a;
+      --color-bg-card: #1a1a26;
+      --color-text: #e8e8ed;
+      --color-text-muted: #8888a0;
+      --color-text-dim: #5c5c72;
+      --color-accent: #04D4DB;
+      --color-accent-light: #04D4DB;
+      --color-accent-glow: rgba(4, 212, 219, 0.15);
+      --color-accent-hover: #30e0e6;
+      --color-teal: #04D4DB;
+      --color-teal-glow: rgba(4, 212, 219, 0.15);
+      --color-amber: #fbbf24;
+      --color-border: rgba(255, 255, 255, 0.06);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.8);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo svg {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--color-text); }
+
+    .btn-nav {
+      background: var(--color-accent);
+      color: #000;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .btn-nav:hover {
+      background: var(--color-accent-hover);
+      color: #000;
+    }
+
+    /* Sections */
+    section {
+      padding: 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: var(--color-accent-glow);
+      border: 1px solid rgba(4, 212, 219, 0.2);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    h1 .accent { color: var(--color-accent); }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--color-accent);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(4, 212, 219, 0.25);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* Problem */
+    .problem { text-align: center; }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      max-width: 680px;
+      margin: 0 auto 3rem;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .comparison-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .comparison-card.old { opacity: 0.7; }
+
+    .comparison-card.new {
+      border-color: rgba(4, 212, 219, 0.2);
+      background: linear-gradient(135deg, var(--color-bg-card) 0%, rgba(4, 212, 219, 0.05) 100%);
+    }
+
+    .comparison-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .comparison-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .comparison-card li {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .comparison-card.old li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: #ef4444;
+    }
+
+    .comparison-card.new li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+    }
+
+    /* How It Works */
+    .how-it-works { text-align: center; }
+
+    .layers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .layer-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: left;
+      transition: all 0.3s;
+    }
+
+    .layer-card:hover {
+      border-color: rgba(4, 212, 219, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .layer-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+
+    .layer-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .layer-card p {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .layer-detail {
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+      border-top: 1px solid var(--color-border);
+      padding-top: 1rem;
+    }
+
+    .layer-detail strong { color: var(--color-text-muted); }
+
+    /* Story / Scenario */
+    .scenario {
+      background: var(--color-bg-alt);
+      border-radius: var(--radius);
+      border: 1px solid var(--color-border);
+      padding: 4rem;
+      margin: 4rem auto;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .scenario::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: var(--color-accent);
+      opacity: 0.15;
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      line-height: 1;
+    }
+
+    .scenario h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--color-accent);
+    }
+
+    .scenario p {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .scenario .agent-msg {
+      background: rgba(4, 212, 219, 0.08);
+      border-left: 3px solid var(--color-accent);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--color-text);
+    }
+
+    /* Differentiators */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .diff-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .diff-vs {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .diff-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .diff-card p {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Vision */
+    .vision { text-align: center; }
+
+    .vision-phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .phase-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .phase-card:nth-child(1)::before { background: var(--color-accent); }
+    .phase-card:nth-child(2)::before { background: var(--color-accent); opacity: 0.6; }
+    .phase-card:nth-child(3)::before { background: var(--color-amber); }
+
+    .phase-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-card p {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem 8rem;
+    }
+
+    .cta-section h2 { margin-bottom: 1rem; }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .email-form input {
+      flex: 1;
+      min-width: 240px;
+      padding: 0.85rem 1.25rem;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      color: var(--color-text);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .email-form input:focus {
+      border-color: var(--color-accent);
+    }
+
+    .email-form input::placeholder {
+      color: var(--color-text-dim);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text { font-size: 0.85rem; color: var(--color-text-dim); }
+    .footer-meaning { font-size: 0.85rem; color: var(--color-text-dim); font-style: italic; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      section { padding: 5rem 1.5rem; }
+      .comparison-grid,
+      .layers,
+      .diff-grid,
+      .vision-phases { grid-template-columns: 1fr; }
+      .scenario { padding: 2.5rem 2rem; }
+      .nav-links { display: none; }
+      .footer-content { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="logo">
+      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 55 L25 5 L45 55 L55 55" stroke="#04D4DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#04D4DB">moibe</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#difference">Why Different</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#join" class="btn-nav">Join Waitlist</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">🔮 The Synergy Network for the AI Age</div>
+    <h1>
+      Your AI Agent Knows<br>
+      <span class="accent">Where You're Going</span><br>
+      Not Just Where You've Been
+    </h1>
+    <p class="hero-sub">
+      Amoibe connects professionals and companies through AI agents that understand future trajectories — discovering synergies, not just matches. Making collaboration frictionless, not just introductions.
+    </p>
+    <div class="hero-cta">
+      <a href="#join" class="btn-primary">Join the Waitlist →</a>
+      <a href="#how" class="btn-secondary">See How It Works</a>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="problem">
+    <div class="section-label">The Problem</div>
+    <h2>Platforms Match Keywords.<br>Amoibe Matches Trajectories.</h2>
+    <p class="section-desc">
+      LinkedIn sees "product manager seeking work" and "startup hiring product manager." Keywords match. Context doesn't. Timing is invisible. Strategic alignment is buried in resume bullet points.
+    </p>
+    <div class="comparison-grid">
+      <div class="comparison-card old">
+        <h3>🔍 Today's Platforms</h3>
+        <ul>
+          <li>Match on past job titles and keywords</li>
+          <li>Static profiles that go stale in weeks</li>
+          <li>Public broadcasting — no private intent</li>
+          <li>Discovery stops at "here's a match"</li>
+          <li>Weeks of paperwork to start working together</li>
+        </ul>
+      </div>
+      <div class="comparison-card new">
+        <h3>🧬 Amoibe</h3>
+        <ul>
+          <li>Match on future direction and values</li>
+          <li>AI agents that learn and evolve with you</li>
+          <li>Private context that agents share selectively</li>
+          <li>Agents frame opportunities around YOUR goals</li>
+          <li>From handshake to working relationship in minutes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how">
+    <div class="section-label">How It Works</div>
+    <h2>Three Layers of Discovery</h2>
+    <p class="section-desc">
+      Your agent doesn't just list your resume. It helps you discover where you're going — then finds the people and companies going there too.
+    </p>
+    <div class="layers">
+      <div class="layer-card">
+        <div class="layer-icon">🪞</div>
+        <h3>Self-Discovery</h3>
+        <p>Your agent guides you through proven psychology frameworks — Ikigai, Career Anchors, Holland Code — to understand not just what you've done, but what you're optimizing for.</p>
+        <div class="layer-detail">
+          <strong>For individuals:</strong> Find your direction through structured reflection, not just resume parsing.<br><br>
+          <strong>For companies:</strong> Wardley Mapping, JTBD, and Three Horizons reveal what talent you actually need — not just what you think you need.
+        </div>
+      </div>
+      <div class="layer-card">
+        <div class="layer-icon">🤝</div>
+        <h3>Agent-to-Agent Discovery</h3>
+        <p>Your agent communicates with other agents through structured protocols — sharing context selectively, discovering synergies neither human would have found alone.</p>
+        <div class="layer-detail">
+          <strong>Privacy-first:</strong> Tiered disclosure — agents reveal more only as mutual fit increases. You approve every escalation.<br><br>
+          <strong>Needs-first:</strong> Your agent leads with YOUR goals, not someone else's pitch.
+        </div>
+      </div>
+      <div class="layer-card">
+        <div class="layer-icon">⚡</div>
+        <h3>Frictionless Action</h3>
+        <p>When both humans say "yes," agents handle the rest — contracts, SOWs, NDAs, invoicing — drafted from context they already hold. Weeks of paperwork become minutes.</p>
+        <div class="layer-detail">
+          <strong>Context-aware:</strong> Documents pre-filled from both agents' understanding of the engagement.<br><br>
+          <strong>Human in the loop:</strong> You review 80% complete drafts, not blank templates.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scenario -->
+  <div class="scenario">
+    <h3>What This Looks Like in Practice</h3>
+    <p>Sarah is a management consultant whose agent has learned — through Ikigai and Career Anchors conversations — that she's passionate about sustainability, values creative technical challenges over management, and is exploring opportunities in Austin.</p>
+    <p>Meanwhile, a cleantech startup's agent knows — through Wardley Mapping and Three Horizons — that they're expanding internationally and need someone who bridges product strategy and emerging markets. They're opening an Austin office.</p>
+    <div class="agent-msg">
+      "Based on your passion for sustainability tech and your interest in Austin, I see an opportunity that aligns with both goals. The cleantech sector there is reaching an inflection point, and there's a company that needs exactly your combination of product strategy and emerging market insight."
+    </div>
+    <p>Sarah's agent didn't say "here's a job posting." It connected her aspirations to an opportunity she didn't know existed — with timing context no platform could surface.</p>
+  </div>
+
+  <!-- Differentiators -->
+  <section id="difference">
+    <div class="section-label" style="text-align:center">Why Different</div>
+    <h2 style="text-align:center">Not Another Job Board.<br>Not Another AI Tool.</h2>
+    <p class="section-desc" style="text-align:center">
+      Amoibe is infrastructure for human amplification — where AI agents represent you, discover for you, and make collaboration effortless.
+    </p>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-vs">vs LinkedIn</div>
+        <h3>Private Intent, Not Public Broadcasting</h3>
+        <p>LinkedIn broadcasts "open to work." Your Amoibe agent holds private aspirations — that you're considering Austin, exploring sustainability, or planning a career pivot — and acts on them selectively, with your permission at every step.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-vs">vs Upwork / Toptal</div>
+        <h3>Proactive Discovery, Not Reactive Bidding</h3>
+        <p>Talent marketplaces wait for you to search. Amoibe's agents discover synergies before either side knows to look — connecting future trajectories, not past keywords. And they carry through to executed agreements, not just introductions.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-vs">vs ChatGPT / AI Tools</div>
+        <h3>Your Trained Extension, Not a Generic Tool</h3>
+        <p>Generic AI doesn't carry your specific expertise, frameworks, or career context. Your Amoibe agent is trained on YOU — your goals, your methods, your preferences. It represents you because it understands you.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-vs">vs The Wild West</div>
+        <h3>Authorized, Not Pirated</h3>
+        <p>Unauthorized AI clones already extract value from people's expertise without consent. Ghost workers complete gigs entirely via AI. Amoibe civilizes this — you own your expertise, you control your agent, you set the terms, you capture the value.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section class="vision" id="vision">
+    <div class="section-label">The Long Game</div>
+    <h2>From Discovery to<br><span style="color: var(--color-accent)">Force Multiplier</span></h2>
+    <p class="section-desc">
+      Amoibe evolves from finding synergies to amplifying your impact. Your agent doesn't just connect you — it carries your expertise into the world.
+    </p>
+    <div class="vision-phases">
+      <div class="phase-card">
+        <div class="phase-label">Phase 1 — Now</div>
+        <h3>Discover & Connect</h3>
+        <p>AI agents learn your direction through guided self-discovery. They communicate with other agents to surface synergies. They frame opportunities around your goals, not job descriptions. You meet the right people at the right time.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Phase 2 — Operationalize</div>
+        <h3>Frictionless Collaboration</h3>
+        <p>Agents draft contracts, manage engagements, handle invoicing — all from context they already hold. Small collaborations that used to die in paperwork become viable. The overhead of formalizing work disappears.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Phase 3 — Amplify</div>
+        <h3>Agent-as-Extension</h3>
+        <p>Your agent carries your expertise into multiple concurrent engagements. One brain, many projects. You handle the 30% that needs judgment. Your agent handles the 70% that's pattern-matchable. You become a franchise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="join">
+    <h2>The Future of Work Is<br><span style="color: var(--color-accent)">Agent-Native</span></h2>
+    <p>Join the early network. Be among the first professionals and companies whose AI agents discover synergies autonomously.</p>
+    <form class="email-form" action="https://formspree.io/f/xqeyjzpw" method="POST">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-primary">Join Waitlist</button>
+    </form>
+    <p style="font-size: 0.8rem; color: var(--color-text-dim); margin-top: 1rem;">No spam. We'll notify you when the network opens.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <span class="footer-text">© 2026 Amoibe</span>
+      <span class="footer-meaning">Amoibe /amoy-bay/ — from the root of "amoeba." Change. Exchange. Reciprocate.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Form submit — show confirmation
+    document.querySelector('.email-form').addEventListener('submit', function(e) {
+      const form = this;
+      const input = form.querySelector('input');
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          input.value = '';
+          input.placeholder = 'Thanks! We\'ll be in touch.';
+          btn.textContent = '✓ Joined';
+          setTimeout(() => { input.placeholder = 'your@email.com'; btn.textContent = 'Join Waitlist'; btn.disabled = false; }, 4000);
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      }).catch(() => { btn.textContent = 'Try again'; btn.disabled = false; });
+
+      e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>
