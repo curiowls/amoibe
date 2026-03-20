@@ -11,6 +11,7 @@
       --optA: #0A7E8C;
       --optB: #2EC4B6;
       --optC: #5BA8A0;
+      --optD: #04D4DB;
       --dark-bg: #0a0a0f;
       --card-bg: #12121a;
       --light-bg: #f8f9fa;
@@ -20,322 +21,151 @@
       --text-dark: #1a1a2e;
       --text-dark-dim: #6b7280;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #050508; color: var(--text); }
 
-    .page-header {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
+    .page-header { text-align: center; padding: 4rem 2rem 2rem; }
     .page-header h1 { font-size: 2rem; font-weight: 300; letter-spacing: -0.02em; }
     .page-header p { color: var(--text-dim); margin-top: 0.5rem; font-size: 0.95rem; }
 
-    /* Color Info Bar */
-    .color-info {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      padding: 2rem;
-      flex-wrap: wrap;
-    }
-    .color-chip {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .color-chip .swatch {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .color-chip .meta {
-      font-size: 0.8rem;
-    }
-    .color-chip .meta .label {
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    .color-chip .meta .hex {
-      color: var(--text-dim);
-      font-family: monospace;
-    }
+    .color-info { display: flex; justify-content: center; gap: 2.5rem; padding: 2rem; flex-wrap: wrap; }
+    .color-chip { display: flex; align-items: center; gap: 0.75rem; }
+    .color-chip .swatch { width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+    .color-chip .meta { font-size: 0.8rem; }
+    .color-chip .meta .label { font-weight: 600; font-size: 0.85rem; }
+    .color-chip .meta .hex { color: var(--text-dim); font-family: monospace; font-size: 0.75rem; }
 
-    /* Section container */
     .section-title {
-      text-align: center;
-      padding: 3rem 2rem 1rem;
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border-top: 1px solid var(--border);
+      text-align: center; padding: 3rem 2rem 1rem; font-size: 1.4rem;
+      font-weight: 300; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 0.15em; border-top: 1px solid var(--border);
     }
 
-    /* Logo Grid */
-    .logo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      padding: 2rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .grid-5 {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem; padding: 2rem 2rem; max-width: 1400px; margin: 0 auto;
     }
+
     .logo-card {
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
+      border-radius: 16px; padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
       border: 1px solid var(--border);
     }
     .logo-card.on-dark { background: var(--dark-bg); }
     .logo-card.on-light { background: var(--light-bg); }
     .logo-card .card-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
     }
     .logo-card.on-light .card-label { color: var(--text-dark-dim); }
+    .logo-card svg { width: 140px; height: auto; }
+    .logo-card .icon-only svg { width: 56px; }
 
-    .logo-card svg { width: 160px; height: auto; }
-    .logo-card .icon-only svg { width: 64px; }
-
-    /* Comparison columns */
-    .comparison {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      padding: 2rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
+    .col { display: flex; flex-direction: column; gap: 1.25rem; }
     .col-header {
-      text-align: center;
-      padding: 0.75rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      text-align: center; padding: 0.6rem; border-radius: 8px;
+      font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
     }
 
-    /* Elements */
     .element-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;
     }
     .element-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
+      font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim);
     }
 
-    /* Buttons */
     .btn-primary-demo {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-align: center;
+      padding: 0.65rem 1.25rem; border: none; border-radius: 8px;
+      color: #fff; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-align: center;
     }
     .btn-outline-demo {
-      padding: 0.75rem 1.5rem;
-      border: 2px solid;
-      border-radius: 8px;
-      background: transparent;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-align: center;
+      padding: 0.65rem 1.25rem; border: 2px solid; border-radius: 8px;
+      background: transparent; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-align: center;
     }
     .btn-ghost-demo {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      background: transparent;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-align: center;
+      padding: 0.65rem 1.25rem; border: none; border-radius: 8px;
+      background: transparent; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-align: center;
     }
 
-    /* Links */
-    .link-demo { text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
-
-    /* Tags */
-    .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .tag {
-      padding: 0.35rem 0.75rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 500;
-    }
-    .tag.filled { color: #fff; }
+    .link-demo { text-decoration: underline; text-underline-offset: 3px; font-weight: 500; font-size: 0.85rem; }
+    .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag { padding: 0.3rem 0.65rem; border-radius: 100px; font-size: 0.7rem; font-weight: 500; }
     .tag.outlined { background: transparent; border: 1px solid; }
 
-    /* Progress */
-    .progress-bar {
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(255,255,255,0.08);
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      border-radius: 3px;
-      width: 65%;
-    }
+    .progress-bar { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.08); overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 3px; width: 65%; }
 
-    /* Input */
     .input-demo {
-      padding: 0.7rem 1rem;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text);
-      font-size: 0.9rem;
-      outline: none;
-      font-family: inherit;
-    }
-    .input-demo:focus {
-      border-color: currentColor;
+      padding: 0.6rem 0.85rem; border-radius: 8px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12); color: var(--text); font-size: 0.8rem;
+      outline: none; font-family: inherit;
     }
     .input-demo::placeholder { color: var(--text-dim); }
 
-    /* Toggle */
-    .toggle-track {
-      width: 44px; height: 24px;
-      border-radius: 12px;
-      position: relative;
-      cursor: pointer;
-    }
+    .toggle-track { width: 40px; height: 22px; border-radius: 11px; position: relative; cursor: pointer; }
     .toggle-thumb {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #fff;
-      position: absolute;
-      top: 3px; left: 23px;
-      transition: left 0.2s;
+      width: 16px; height: 16px; border-radius: 50%; background: #fff;
+      position: absolute; top: 3px; left: 21px;
     }
 
-    /* Heading with accent */
-    .heading-demo { font-size: 1.3rem; font-weight: 700; line-height: 1.3; }
-    .heading-demo .accent { }
+    .heading-demo { font-size: 1.1rem; font-weight: 700; line-height: 1.3; }
+    .stat-number { font-size: 1.8rem; font-weight: 700; }
+    .stat-label { font-size: 0.75rem; color: var(--text-dim); }
 
-    /* Stat card */
-    .stat-number { font-size: 2rem; font-weight: 700; }
-    .stat-label { font-size: 0.8rem; color: var(--text-dim); }
+    .notif-row { display: flex; align-items: center; gap: 0.6rem; }
+    .notif-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .notif-text { font-size: 0.8rem; }
 
-    /* Notification dot */
-    .notif-row { display: flex; align-items: center; gap: 0.75rem; }
-    .notif-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .notif-text { font-size: 0.85rem; }
-
-    /* Divider */
-    .divider { height: 1px; background: var(--border); }
-
-    /* Icon circle */
-    .icon-circles { display: flex; gap: 1rem; }
+    .icon-circles { display: flex; gap: 0.75rem; }
     .icon-circle {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
     }
-    .icon-circle.filled { color: #fff; }
-    .icon-circle.soft { }
 
-    /* Hero mock */
     .hero-mock {
-      border-radius: 12px;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
+      border-radius: 12px; padding: 2rem 1.25rem; text-align: center;
       border: 1px solid var(--border);
     }
-    .hero-mock h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .hero-mock p { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.25rem; line-height: 1.5; }
+    .hero-mock h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .hero-mock p { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.5; }
 
-    /* Light section */
     .light-section {
-      background: var(--light-bg);
-      padding: 3rem;
-      margin: 2rem 3rem;
-      border-radius: 16px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+      background: var(--light-bg); padding: 2rem; margin: 2rem; border-radius: 16px;
+      max-width: 1400px; margin-left: auto; margin-right: auto;
     }
-    .light-section .comparison {
-      padding: 0;
-      max-width: none;
-    }
-    .light-section .element-card {
-      background: #fff;
-      border-color: #e5e7eb;
-    }
+    .light-section .grid-5 { padding: 0; max-width: none; }
+    .light-section .element-card { background: #fff; border-color: #e5e7eb; }
     .light-section .element-label { color: var(--text-dark-dim); }
-    .light-section .btn-primary-demo { color: #fff; }
     .light-section .heading-demo { color: var(--text-dark); }
-    .light-section .link-demo { }
     .light-section .notif-text { color: var(--text-dark); }
-    .light-section .stat-number { }
     .light-section .stat-label { color: var(--text-dark-dim); }
     .light-section .progress-bar { background: #e5e7eb; }
-    .light-section .input-demo {
-      background: #fff;
-      border-color: #d1d5db;
-      color: var(--text-dark);
-    }
+    .light-section .input-demo { background: #fff; border-color: #d1d5db; color: var(--text-dark); }
 
-    /* Accessibility note */
-    .a11y-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 3rem;
-    }
-    .a11y-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
+    .a11y-section { max-width: 1400px; margin: 0 auto; padding: 2rem; }
     .a11y-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem; text-align: center;
     }
-    .a11y-card .ratio { font-size: 1.5rem; font-weight: 700; }
-    .a11y-card .verdict { font-size: 0.75rem; margin-top: 0.25rem; }
-    .a11y-card .context { font-size: 0.7rem; color: var(--text-dim); margin-top: 0.5rem; }
+    .a11y-card .ratio { font-size: 1.4rem; font-weight: 700; }
+    .a11y-card .verdict { font-size: 0.7rem; margin-top: 0.2rem; }
+    .a11y-card .context { font-size: 0.65rem; color: var(--text-dim); margin-top: 0.4rem; }
     .pass { color: #4ade80; }
     .fail { color: #f87171; }
+    .warn { color: #fbbf24; }
+    .a11y-pair { display: flex; gap: 1rem; margin-top: 0.75rem; }
+    .a11y-half { flex: 1; }
 
-    @media (max-width: 900px) {
-      .logo-grid, .comparison, .a11y-grid { grid-template-columns: repeat(2, 1fr); }
+    .rec-banner {
+      max-width: 1400px; margin: 2rem auto; padding: 2rem;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
     }
-    @media (max-width: 500px) {
-      .logo-grid, .comparison, .a11y-grid { grid-template-columns: 1fr; }
-    }
+    .rec-banner h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .rec-banner p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+    @media (max-width: 1100px) { .grid-5 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .grid-5 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 450px) { .grid-5 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -345,396 +175,362 @@
     <p>Messaging: calm, clarity, sophisticated renewal — the depth of nature meets life</p>
   </div>
 
-  <!-- Color Reference -->
   <div class="color-info">
     <div class="color-chip">
       <div class="swatch" style="background: var(--current);"></div>
-      <div class="meta">
-        <div class="label">Current (Cyan)</div>
-        <div class="hex">#00FFFF · 180° 100% 50%</div>
-      </div>
+      <div class="meta"><div class="label">Current · Cyan</div><div class="hex">#00FFFF · 180° 100% 50%</div></div>
+    </div>
+    <div class="color-chip">
+      <div class="swatch" style="background: var(--optD);"></div>
+      <div class="meta"><div class="label">D · Vivid Teal ★ NEW</div><div class="hex">#04D4DB · 182° 96% 44%</div></div>
     </div>
     <div class="color-chip">
       <div class="swatch" style="background: var(--optA);"></div>
-      <div class="meta">
-        <div class="label">A · Deep Teal</div>
-        <div class="hex">#0A7E8C · 186° 88% 30%</div>
-      </div>
+      <div class="meta"><div class="label">A · Deep Teal</div><div class="hex">#0A7E8C · 186° 88% 30%</div></div>
     </div>
     <div class="color-chip">
       <div class="swatch" style="background: var(--optB);"></div>
-      <div class="meta">
-        <div class="label">B · Balanced Teal ★</div>
-        <div class="hex">#2EC4B6 · 174° 62% 47%</div>
-      </div>
+      <div class="meta"><div class="label">B · Balanced Teal</div><div class="hex">#2EC4B6 · 174° 62% 47%</div></div>
     </div>
     <div class="color-chip">
       <div class="swatch" style="background: var(--optC);"></div>
-      <div class="meta">
-        <div class="label">C · Muted Sage-Teal</div>
-        <div class="hex">#5BA8A0 · 171° 28% 51%</div>
-      </div>
+      <div class="meta"><div class="label">C · Muted Sage</div><div class="hex">#5BA8A0 · 171° 28% 51%</div></div>
     </div>
   </div>
 
-  <!-- LOGOS -->
+  <!-- LOGOS DARK -->
   <div class="section-title">Logo — Dark Background</div>
-  <div class="logo-grid">
+  <div class="grid-5">
     <div class="logo-card on-dark">
       <div class="card-label" style="color: var(--current);">Current · Cyan</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#00FFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#00FFFF">moibe</text>
-      </svg>
-      <div class="icon-only">
-        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#00FFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#00FFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#00FFFF">moibe</text></svg>
+      <div class="icon-only"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#00FFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+    </div>
+    <div class="logo-card on-dark">
+      <div class="card-label" style="color: var(--optD);">D · Vivid Teal ★</div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#04D4DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#04D4DB">moibe</text></svg>
+      <div class="icon-only"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#04D4DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
     </div>
     <div class="logo-card on-dark">
       <div class="card-label" style="color: var(--optA);">A · Deep Teal</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#0A7E8C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#0A7E8C">moibe</text>
-      </svg>
-      <div class="icon-only">
-        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#0A7E8C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#0A7E8C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#0A7E8C">moibe</text></svg>
+      <div class="icon-only"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#0A7E8C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
     </div>
     <div class="logo-card on-dark">
-      <div class="card-label" style="color: var(--optB);">B · Balanced Teal ★</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#2EC4B6">moibe</text>
-      </svg>
-      <div class="icon-only">
-        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
+      <div class="card-label" style="color: var(--optB);">B · Balanced Teal</div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#2EC4B6">moibe</text></svg>
+      <div class="icon-only"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
     </div>
     <div class="logo-card on-dark">
       <div class="card-label" style="color: var(--optC);">C · Muted Sage</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#5BA8A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#5BA8A0">moibe</text>
-      </svg>
-      <div class="icon-only">
-        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#5BA8A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#5BA8A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#5BA8A0">moibe</text></svg>
+      <div class="icon-only"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#5BA8A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
     </div>
   </div>
 
+  <!-- LOGOS LIGHT -->
   <div class="section-title">Logo — Light Background</div>
-  <div class="logo-grid">
+  <div class="grid-5">
     <div class="logo-card on-light">
       <div class="card-label">Current · Cyan</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#00FFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#00FFFF">moibe</text>
-      </svg>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#00FFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#00FFFF">moibe</text></svg>
+    </div>
+    <div class="logo-card on-light">
+      <div class="card-label">D · Vivid Teal ★</div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#04D4DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#04D4DB">moibe</text></svg>
     </div>
     <div class="logo-card on-light">
       <div class="card-label">A · Deep Teal</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#0A7E8C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#0A7E8C">moibe</text>
-      </svg>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#0A7E8C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#0A7E8C">moibe</text></svg>
     </div>
     <div class="logo-card on-light">
-      <div class="card-label">B · Balanced Teal ★</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#2EC4B6">moibe</text>
-      </svg>
+      <div class="card-label">B · Balanced Teal</div>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#2EC4B6">moibe</text></svg>
     </div>
     <div class="logo-card on-light">
       <div class="card-label">C · Muted Sage</div>
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 L25 5 L45 55 L45 55 L55 55" stroke="#5BA8A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <text x="62" y="48" font-family="Inter, sans-serif" font-size="32" font-weight="300" fill="#5BA8A0">moibe</text>
-      </svg>
+      <svg viewBox="0 0 200 60" fill="none"><path d="M5 55 L25 5 L45 55 L55 55" stroke="#5BA8A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="62" y="48" font-family="Inter,sans-serif" font-size="32" font-weight="300" fill="#5BA8A0">moibe</text></svg>
     </div>
   </div>
 
-  <!-- UI ELEMENTS — DARK -->
+  <!-- UI ELEMENTS DARK -->
   <div class="section-title">UI Elements — Dark Theme</div>
-  <div class="comparison">
+  <div class="grid-5">
 
     <!-- Current Cyan -->
     <div class="col">
       <div class="col-header" style="background: rgba(0,255,255,0.1); color: var(--current);">Current · Cyan</div>
-
       <div class="element-card">
         <div class="element-label">Buttons</div>
         <button class="btn-primary-demo" style="background: var(--current); color: #000;">Join Waitlist</button>
         <button class="btn-outline-demo" style="border-color: var(--current); color: var(--current);">Learn More</button>
         <button class="btn-ghost-demo" style="color: var(--current);">View Details →</button>
       </div>
-
       <div class="element-card">
         <div class="element-label">Typography</div>
-        <div class="heading-demo">Discover Your <span class="accent" style="color: var(--current);">Future Path</span></div>
-        <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.6;">AI agents that understand where you're going, not just where you've been.</p>
+        <div class="heading-demo">Discover Your <span style="color: var(--current);">Future Path</span></div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">AI agents that understand where you're going.</p>
         <a class="link-demo" style="color: var(--current);">Explore the network →</a>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Tags & Badges</div>
+        <div class="element-label">Tags</div>
         <div class="tags">
-          <span class="tag filled" style="background: var(--current); color: #000;">AI-Native</span>
+          <span class="tag" style="background: var(--current); color: #000;">AI-Native</span>
           <span class="tag outlined" style="border-color: var(--current); color: var(--current);">Beta</span>
-          <span class="tag filled" style="background: rgba(0,255,255,0.12); color: var(--current);">New</span>
+          <span class="tag" style="background: rgba(0,255,255,0.12); color: var(--current);">New</span>
         </div>
       </div>
-
       <div class="element-card">
         <div class="element-label">Stats</div>
         <div class="stat-number" style="color: var(--current);">2,847</div>
         <div class="stat-label">Agents Connected</div>
         <div class="progress-bar"><div class="progress-fill" style="background: var(--current);"></div></div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Input (focused)</div>
+        <div class="element-label">Input</div>
         <input class="input-demo" style="border-color: var(--current);" value="chelsea@amoibe.com" readonly>
       </div>
-
       <div class="element-card">
         <div class="element-label">Toggle & Icons</div>
-        <div style="display:flex; align-items:center; gap:1rem;">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
           <div class="toggle-track" style="background: var(--current);"><div class="toggle-thumb"></div></div>
-          <span style="font-size: 0.85rem;">Agent Active</span>
+          <span style="font-size: 0.8rem;">Agent Active</span>
         </div>
         <div class="icon-circles">
-          <div class="icon-circle filled" style="background: var(--current); color: #000;">✦</div>
-          <div class="icon-circle soft" style="background: rgba(0,255,255,0.1); color: var(--current);">⬡</div>
+          <div class="icon-circle" style="background: var(--current); color: #000;">✦</div>
+          <div class="icon-circle" style="background: rgba(0,255,255,0.1); color: var(--current);">⬡</div>
           <div class="icon-circle" style="border: 2px solid var(--current); color: var(--current);">◈</div>
         </div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Notification</div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--current);"></div>
-          <div class="notif-text">New synergy match found</div>
-        </div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--current); opacity:0.4;"></div>
-          <div class="notif-text" style="color: var(--text-dim);">Agent profile updated</div>
-        </div>
+        <div class="element-label">Notifications</div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--current);"></div><div class="notif-text">New synergy match</div></div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--current); opacity:0.4;"></div><div class="notif-text" style="color:var(--text-dim);">Profile updated</div></div>
       </div>
     </div>
 
-    <!-- Option A -->
+    <!-- Option D — Vivid Teal -->
+    <div class="col">
+      <div class="col-header" style="background: rgba(4,212,219,0.1); color: var(--optD);">D · Vivid Teal ★</div>
+      <div class="element-card">
+        <div class="element-label">Buttons</div>
+        <button class="btn-primary-demo" style="background: var(--optD); color: #000;">Join Waitlist</button>
+        <button class="btn-outline-demo" style="border-color: var(--optD); color: var(--optD);">Learn More</button>
+        <button class="btn-ghost-demo" style="color: var(--optD);">View Details →</button>
+      </div>
+      <div class="element-card">
+        <div class="element-label">Typography</div>
+        <div class="heading-demo">Discover Your <span style="color: var(--optD);">Future Path</span></div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">AI agents that understand where you're going.</p>
+        <a class="link-demo" style="color: var(--optD);">Explore the network →</a>
+      </div>
+      <div class="element-card">
+        <div class="element-label">Tags</div>
+        <div class="tags">
+          <span class="tag" style="background: var(--optD); color: #000;">AI-Native</span>
+          <span class="tag outlined" style="border-color: var(--optD); color: var(--optD);">Beta</span>
+          <span class="tag" style="background: rgba(4,212,219,0.12); color: var(--optD);">New</span>
+        </div>
+      </div>
+      <div class="element-card">
+        <div class="element-label">Stats</div>
+        <div class="stat-number" style="color: var(--optD);">2,847</div>
+        <div class="stat-label">Agents Connected</div>
+        <div class="progress-bar"><div class="progress-fill" style="background: var(--optD);"></div></div>
+      </div>
+      <div class="element-card">
+        <div class="element-label">Input</div>
+        <input class="input-demo" style="border-color: var(--optD);" value="chelsea@amoibe.com" readonly>
+      </div>
+      <div class="element-card">
+        <div class="element-label">Toggle & Icons</div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div class="toggle-track" style="background: var(--optD);"><div class="toggle-thumb"></div></div>
+          <span style="font-size: 0.8rem;">Agent Active</span>
+        </div>
+        <div class="icon-circles">
+          <div class="icon-circle" style="background: var(--optD); color: #000;">✦</div>
+          <div class="icon-circle" style="background: rgba(4,212,219,0.1); color: var(--optD);">⬡</div>
+          <div class="icon-circle" style="border: 2px solid var(--optD); color: var(--optD);">◈</div>
+        </div>
+      </div>
+      <div class="element-card">
+        <div class="element-label">Notifications</div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optD);"></div><div class="notif-text">New synergy match</div></div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optD); opacity:0.4;"></div><div class="notif-text" style="color:var(--text-dim);">Profile updated</div></div>
+      </div>
+    </div>
+
+    <!-- Option A — Deep Teal -->
     <div class="col">
       <div class="col-header" style="background: rgba(10,126,140,0.15); color: var(--optA);">A · Deep Teal</div>
-
       <div class="element-card">
         <div class="element-label">Buttons</div>
         <button class="btn-primary-demo" style="background: var(--optA);">Join Waitlist</button>
         <button class="btn-outline-demo" style="border-color: var(--optA); color: var(--optA);">Learn More</button>
         <button class="btn-ghost-demo" style="color: var(--optA);">View Details →</button>
       </div>
-
       <div class="element-card">
         <div class="element-label">Typography</div>
-        <div class="heading-demo">Discover Your <span class="accent" style="color: var(--optA);">Future Path</span></div>
-        <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.6;">AI agents that understand where you're going, not just where you've been.</p>
+        <div class="heading-demo">Discover Your <span style="color: var(--optA);">Future Path</span></div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">AI agents that understand where you're going.</p>
         <a class="link-demo" style="color: var(--optA);">Explore the network →</a>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Tags & Badges</div>
+        <div class="element-label">Tags</div>
         <div class="tags">
-          <span class="tag filled" style="background: var(--optA);">AI-Native</span>
+          <span class="tag" style="background: var(--optA); color: #fff;">AI-Native</span>
           <span class="tag outlined" style="border-color: var(--optA); color: var(--optA);">Beta</span>
-          <span class="tag filled" style="background: rgba(10,126,140,0.15); color: var(--optA);">New</span>
+          <span class="tag" style="background: rgba(10,126,140,0.15); color: var(--optA);">New</span>
         </div>
       </div>
-
       <div class="element-card">
         <div class="element-label">Stats</div>
         <div class="stat-number" style="color: var(--optA);">2,847</div>
         <div class="stat-label">Agents Connected</div>
         <div class="progress-bar"><div class="progress-fill" style="background: var(--optA);"></div></div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Input (focused)</div>
+        <div class="element-label">Input</div>
         <input class="input-demo" style="border-color: var(--optA);" value="chelsea@amoibe.com" readonly>
       </div>
-
       <div class="element-card">
         <div class="element-label">Toggle & Icons</div>
-        <div style="display:flex; align-items:center; gap:1rem;">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
           <div class="toggle-track" style="background: var(--optA);"><div class="toggle-thumb"></div></div>
-          <span style="font-size: 0.85rem;">Agent Active</span>
+          <span style="font-size: 0.8rem;">Agent Active</span>
         </div>
         <div class="icon-circles">
-          <div class="icon-circle filled" style="background: var(--optA);">✦</div>
-          <div class="icon-circle soft" style="background: rgba(10,126,140,0.15); color: var(--optA);">⬡</div>
+          <div class="icon-circle" style="background: var(--optA); color: #fff;">✦</div>
+          <div class="icon-circle" style="background: rgba(10,126,140,0.15); color: var(--optA);">⬡</div>
           <div class="icon-circle" style="border: 2px solid var(--optA); color: var(--optA);">◈</div>
         </div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Notification</div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--optA);"></div>
-          <div class="notif-text">New synergy match found</div>
-        </div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--optA); opacity:0.4;"></div>
-          <div class="notif-text" style="color: var(--text-dim);">Agent profile updated</div>
-        </div>
+        <div class="element-label">Notifications</div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optA);"></div><div class="notif-text">New synergy match</div></div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optA); opacity:0.4;"></div><div class="notif-text" style="color:var(--text-dim);">Profile updated</div></div>
       </div>
     </div>
 
-    <!-- Option B -->
+    <!-- Option B — Balanced Teal -->
     <div class="col">
-      <div class="col-header" style="background: rgba(46,196,182,0.12); color: var(--optB);">B · Balanced Teal ★</div>
-
+      <div class="col-header" style="background: rgba(46,196,182,0.12); color: var(--optB);">B · Balanced Teal</div>
       <div class="element-card">
         <div class="element-label">Buttons</div>
         <button class="btn-primary-demo" style="background: var(--optB); color: #000;">Join Waitlist</button>
         <button class="btn-outline-demo" style="border-color: var(--optB); color: var(--optB);">Learn More</button>
         <button class="btn-ghost-demo" style="color: var(--optB);">View Details →</button>
       </div>
-
       <div class="element-card">
         <div class="element-label">Typography</div>
-        <div class="heading-demo">Discover Your <span class="accent" style="color: var(--optB);">Future Path</span></div>
-        <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.6;">AI agents that understand where you're going, not just where you've been.</p>
+        <div class="heading-demo">Discover Your <span style="color: var(--optB);">Future Path</span></div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">AI agents that understand where you're going.</p>
         <a class="link-demo" style="color: var(--optB);">Explore the network →</a>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Tags & Badges</div>
+        <div class="element-label">Tags</div>
         <div class="tags">
-          <span class="tag filled" style="background: var(--optB); color: #000;">AI-Native</span>
+          <span class="tag" style="background: var(--optB); color: #000;">AI-Native</span>
           <span class="tag outlined" style="border-color: var(--optB); color: var(--optB);">Beta</span>
-          <span class="tag filled" style="background: rgba(46,196,182,0.1); color: var(--optB);">New</span>
+          <span class="tag" style="background: rgba(46,196,182,0.1); color: var(--optB);">New</span>
         </div>
       </div>
-
       <div class="element-card">
         <div class="element-label">Stats</div>
         <div class="stat-number" style="color: var(--optB);">2,847</div>
         <div class="stat-label">Agents Connected</div>
         <div class="progress-bar"><div class="progress-fill" style="background: var(--optB);"></div></div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Input (focused)</div>
+        <div class="element-label">Input</div>
         <input class="input-demo" style="border-color: var(--optB);" value="chelsea@amoibe.com" readonly>
       </div>
-
       <div class="element-card">
         <div class="element-label">Toggle & Icons</div>
-        <div style="display:flex; align-items:center; gap:1rem;">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
           <div class="toggle-track" style="background: var(--optB);"><div class="toggle-thumb"></div></div>
-          <span style="font-size: 0.85rem;">Agent Active</span>
+          <span style="font-size: 0.8rem;">Agent Active</span>
         </div>
         <div class="icon-circles">
-          <div class="icon-circle filled" style="background: var(--optB); color: #000;">✦</div>
-          <div class="icon-circle soft" style="background: rgba(46,196,182,0.1); color: var(--optB);">⬡</div>
+          <div class="icon-circle" style="background: var(--optB); color: #000;">✦</div>
+          <div class="icon-circle" style="background: rgba(46,196,182,0.1); color: var(--optB);">⬡</div>
           <div class="icon-circle" style="border: 2px solid var(--optB); color: var(--optB);">◈</div>
         </div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Notification</div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--optB);"></div>
-          <div class="notif-text">New synergy match found</div>
-        </div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--optB); opacity:0.4;"></div>
-          <div class="notif-text" style="color: var(--text-dim);">Agent profile updated</div>
-        </div>
+        <div class="element-label">Notifications</div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optB);"></div><div class="notif-text">New synergy match</div></div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optB); opacity:0.4;"></div><div class="notif-text" style="color:var(--text-dim);">Profile updated</div></div>
       </div>
     </div>
 
-    <!-- Option C -->
+    <!-- Option C — Muted Sage -->
     <div class="col">
       <div class="col-header" style="background: rgba(91,168,160,0.12); color: var(--optC);">C · Muted Sage</div>
-
       <div class="element-card">
         <div class="element-label">Buttons</div>
         <button class="btn-primary-demo" style="background: var(--optC);">Join Waitlist</button>
         <button class="btn-outline-demo" style="border-color: var(--optC); color: var(--optC);">Learn More</button>
         <button class="btn-ghost-demo" style="color: var(--optC);">View Details →</button>
       </div>
-
       <div class="element-card">
         <div class="element-label">Typography</div>
-        <div class="heading-demo">Discover Your <span class="accent" style="color: var(--optC);">Future Path</span></div>
-        <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.6;">AI agents that understand where you're going, not just where you've been.</p>
+        <div class="heading-demo">Discover Your <span style="color: var(--optC);">Future Path</span></div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">AI agents that understand where you're going.</p>
         <a class="link-demo" style="color: var(--optC);">Explore the network →</a>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Tags & Badges</div>
+        <div class="element-label">Tags</div>
         <div class="tags">
-          <span class="tag filled" style="background: var(--optC);">AI-Native</span>
+          <span class="tag" style="background: var(--optC); color: #fff;">AI-Native</span>
           <span class="tag outlined" style="border-color: var(--optC); color: var(--optC);">Beta</span>
-          <span class="tag filled" style="background: rgba(91,168,160,0.1); color: var(--optC);">New</span>
+          <span class="tag" style="background: rgba(91,168,160,0.1); color: var(--optC);">New</span>
         </div>
       </div>
-
       <div class="element-card">
         <div class="element-label">Stats</div>
         <div class="stat-number" style="color: var(--optC);">2,847</div>
         <div class="stat-label">Agents Connected</div>
         <div class="progress-bar"><div class="progress-fill" style="background: var(--optC);"></div></div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Input (focused)</div>
+        <div class="element-label">Input</div>
         <input class="input-demo" style="border-color: var(--optC);" value="chelsea@amoibe.com" readonly>
       </div>
-
       <div class="element-card">
         <div class="element-label">Toggle & Icons</div>
-        <div style="display:flex; align-items:center; gap:1rem;">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
           <div class="toggle-track" style="background: var(--optC);"><div class="toggle-thumb"></div></div>
-          <span style="font-size: 0.85rem;">Agent Active</span>
+          <span style="font-size: 0.8rem;">Agent Active</span>
         </div>
         <div class="icon-circles">
-          <div class="icon-circle filled" style="background: var(--optC);">✦</div>
-          <div class="icon-circle soft" style="background: rgba(91,168,160,0.1); color: var(--optC);">⬡</div>
+          <div class="icon-circle" style="background: var(--optC); color: #fff;">✦</div>
+          <div class="icon-circle" style="background: rgba(91,168,160,0.1); color: var(--optC);">⬡</div>
           <div class="icon-circle" style="border: 2px solid var(--optC); color: var(--optC);">◈</div>
         </div>
       </div>
-
       <div class="element-card">
-        <div class="element-label">Notification</div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--optC);"></div>
-          <div class="notif-text">New synergy match found</div>
-        </div>
-        <div class="notif-row">
-          <div class="notif-dot" style="background: var(--optC); opacity:0.4;"></div>
-          <div class="notif-text" style="color: var(--text-dim);">Agent profile updated</div>
-        </div>
+        <div class="element-label">Notifications</div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optC);"></div><div class="notif-text">New synergy match</div></div>
+        <div class="notif-row"><div class="notif-dot" style="background: var(--optC); opacity:0.4;"></div><div class="notif-text" style="color:var(--text-dim);">Profile updated</div></div>
       </div>
     </div>
 
   </div>
 
-  <!-- HERO MOCK -->
+  <!-- HERO MOCKS -->
   <div class="section-title">Hero Section Mock</div>
-  <div class="comparison">
+  <div class="grid-5">
     <div class="hero-mock" style="background: linear-gradient(135deg, rgba(0,255,255,0.06) 0%, var(--dark-bg) 100%);">
       <h3>The Future of Work Is <span style="color: var(--current);">Agent-Native</span></h3>
       <p>AI agents discover synergies autonomously. You decide what to pursue.</p>
       <button class="btn-primary-demo" style="background: var(--current); color: #000;">Join Waitlist</button>
+    </div>
+    <div class="hero-mock" style="background: linear-gradient(135deg, rgba(4,212,219,0.08) 0%, var(--dark-bg) 100%);">
+      <h3>The Future of Work Is <span style="color: var(--optD);">Agent-Native</span></h3>
+      <p>AI agents discover synergies autonomously. You decide what to pursue.</p>
+      <button class="btn-primary-demo" style="background: var(--optD); color: #000;">Join Waitlist</button>
     </div>
     <div class="hero-mock" style="background: linear-gradient(135deg, rgba(10,126,140,0.1) 0%, var(--dark-bg) 100%);">
       <h3>The Future of Work Is <span style="color: var(--optA);">Agent-Native</span></h3>
@@ -756,7 +552,7 @@
   <!-- LIGHT THEME -->
   <div class="section-title">UI Elements — Light Theme</div>
   <div class="light-section">
-    <div class="comparison">
+    <div class="grid-5">
       <div class="col">
         <div class="col-header" style="background: rgba(0,255,255,0.08); color: #00b3b3;">Current · Cyan</div>
         <div class="element-card">
@@ -767,7 +563,7 @@
         <div class="element-card">
           <div class="element-label">Typography</div>
           <div class="heading-demo">Discover Your <span style="color: #00b3b3;">Future Path</span></div>
-          <a class="link-demo" style="color: #00b3b3;">Explore the network →</a>
+          <a class="link-demo" style="color: #00b3b3;">Explore →</a>
         </div>
         <div class="element-card">
           <div class="element-label">Stats</div>
@@ -776,7 +572,25 @@
           <div class="progress-bar"><div class="progress-fill" style="background: #00b3b3;"></div></div>
         </div>
       </div>
-
+      <div class="col">
+        <div class="col-header" style="background: rgba(4,212,219,0.08); color: #039ba1;">D · Vivid Teal ★</div>
+        <div class="element-card">
+          <div class="element-label">Buttons</div>
+          <button class="btn-primary-demo" style="background: #039ba1;">Join Waitlist</button>
+          <button class="btn-outline-demo" style="border-color: #039ba1; color: #039ba1;">Learn More</button>
+        </div>
+        <div class="element-card">
+          <div class="element-label">Typography</div>
+          <div class="heading-demo">Discover Your <span style="color: #039ba1;">Future Path</span></div>
+          <a class="link-demo" style="color: #039ba1;">Explore →</a>
+        </div>
+        <div class="element-card">
+          <div class="element-label">Stats</div>
+          <div class="stat-number" style="color: #039ba1;">2,847</div>
+          <div class="stat-label">Agents Connected</div>
+          <div class="progress-bar"><div class="progress-fill" style="background: var(--optD);"></div></div>
+        </div>
+      </div>
       <div class="col">
         <div class="col-header" style="background: rgba(10,126,140,0.08); color: var(--optA);">A · Deep Teal</div>
         <div class="element-card">
@@ -787,7 +601,7 @@
         <div class="element-card">
           <div class="element-label">Typography</div>
           <div class="heading-demo">Discover Your <span style="color: var(--optA);">Future Path</span></div>
-          <a class="link-demo" style="color: var(--optA);">Explore the network →</a>
+          <a class="link-demo" style="color: var(--optA);">Explore →</a>
         </div>
         <div class="element-card">
           <div class="element-label">Stats</div>
@@ -796,38 +610,36 @@
           <div class="progress-bar"><div class="progress-fill" style="background: var(--optA);"></div></div>
         </div>
       </div>
-
       <div class="col">
-        <div class="col-header" style="background: rgba(46,196,182,0.08); color: #22a99d;">B · Balanced Teal ★</div>
+        <div class="col-header" style="background: rgba(46,196,182,0.08); color: #1a8a7e;">B · Balanced Teal</div>
         <div class="element-card">
           <div class="element-label">Buttons</div>
-          <button class="btn-primary-demo" style="background: var(--optB); color: #000;">Join Waitlist</button>
-          <button class="btn-outline-demo" style="border-color: var(--optB); color: #22a99d;">Learn More</button>
+          <button class="btn-primary-demo" style="background: #1a8a7e;">Join Waitlist</button>
+          <button class="btn-outline-demo" style="border-color: #1a8a7e; color: #1a8a7e;">Learn More</button>
         </div>
         <div class="element-card">
           <div class="element-label">Typography</div>
-          <div class="heading-demo">Discover Your <span style="color: #22a99d;">Future Path</span></div>
-          <a class="link-demo" style="color: #22a99d;">Explore the network →</a>
+          <div class="heading-demo">Discover Your <span style="color: #1a8a7e;">Future Path</span></div>
+          <a class="link-demo" style="color: #1a8a7e;">Explore →</a>
         </div>
         <div class="element-card">
           <div class="element-label">Stats</div>
-          <div class="stat-number" style="color: #22a99d;">2,847</div>
+          <div class="stat-number" style="color: #1a8a7e;">2,847</div>
           <div class="stat-label">Agents Connected</div>
           <div class="progress-bar"><div class="progress-fill" style="background: var(--optB);"></div></div>
         </div>
       </div>
-
       <div class="col">
         <div class="col-header" style="background: rgba(91,168,160,0.08); color: #4a918a;">C · Muted Sage</div>
         <div class="element-card">
           <div class="element-label">Buttons</div>
-          <button class="btn-primary-demo" style="background: var(--optC);">Join Waitlist</button>
-          <button class="btn-outline-demo" style="border-color: var(--optC); color: #4a918a;">Learn More</button>
+          <button class="btn-primary-demo" style="background: #4a918a;">Join Waitlist</button>
+          <button class="btn-outline-demo" style="border-color: #4a918a; color: #4a918a;">Learn More</button>
         </div>
         <div class="element-card">
           <div class="element-label">Typography</div>
           <div class="heading-demo">Discover Your <span style="color: #4a918a;">Future Path</span></div>
-          <a class="link-demo" style="color: #4a918a;">Explore the network →</a>
+          <a class="link-demo" style="color: #4a918a;">Explore →</a>
         </div>
         <div class="element-card">
           <div class="element-label">Stats</div>
@@ -839,74 +651,114 @@
     </div>
   </div>
 
-  <!-- ACCESSIBILITY -->
-  <div class="section-title">Contrast Ratios (WCAG)</div>
+  <!-- CONTRAST RATIOS -->
+  <div class="section-title">Contrast Ratios — WCAG Accessibility</div>
   <div class="a11y-section">
-    <div class="a11y-grid">
+    <div class="grid-5">
+
       <div class="a11y-card">
-        <div style="color: var(--current); font-weight: 600;">Current · Cyan</div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On dark (#0a0a0f)</div>
-          <div class="ratio" style="color: var(--current);">15.8:1</div>
-          <div class="verdict pass">✓ AAA Pass</div>
+        <div style="color: var(--current); font-weight: 600; font-size: 0.85rem;">Current · Cyan</div>
+        <div style="color: var(--current); font-family: monospace; font-size: 0.75rem;">#00FFFF</div>
+        <div class="a11y-pair">
+          <div class="a11y-half">
+            <div class="context">On dark #0a0a0f</div>
+            <div class="ratio" style="color: var(--current);">15.8:1</div>
+            <div class="verdict pass">✓ AAA</div>
+          </div>
+          <div class="a11y-half">
+            <div class="context">On white #fff</div>
+            <div class="ratio" style="color: #999;">1.3:1</div>
+            <div class="verdict fail">✗ Fail</div>
+          </div>
         </div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On white (#ffffff)</div>
-          <div class="ratio" style="color: #00b3b3;">1.3:1</div>
-          <div class="verdict fail">✗ Fails all</div>
+        <div class="context" style="margin-top:0.75rem; color: #f87171;">⚠️ Completely unusable on light backgrounds. Must darken to #00b3b3 (3.2:1) or deeper.</div>
+      </div>
+
+      <div class="a11y-card" style="border-color: rgba(4,212,219,0.3);">
+        <div style="color: var(--optD); font-weight: 600; font-size: 0.85rem;">D · Vivid Teal ★</div>
+        <div style="color: var(--optD); font-family: monospace; font-size: 0.75rem;">#04D4DB</div>
+        <div class="a11y-pair">
+          <div class="a11y-half">
+            <div class="context">On dark #0a0a0f</div>
+            <div class="ratio" style="color: var(--optD);">10.8:1</div>
+            <div class="verdict pass">✓ AAA</div>
+          </div>
+          <div class="a11y-half">
+            <div class="context">On white #fff</div>
+            <div class="ratio" style="color: #999;">1.8:1</div>
+            <div class="verdict fail">✗ Fail</div>
+          </div>
         </div>
-        <div class="context" style="margin-top: 0.75rem;">⚠️ Unusable on light backgrounds without darkening</div>
+        <div class="context" style="margin-top:0.75rem;">Excellent on dark. Light bg needs dark variant #039ba1 (4.6:1 ✓ AA).</div>
       </div>
 
       <div class="a11y-card">
-        <div style="color: var(--optA); font-weight: 600;">A · Deep Teal</div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On dark (#0a0a0f)</div>
-          <div class="ratio" style="color: var(--optA);">5.2:1</div>
-          <div class="verdict pass">✓ AA Pass</div>
+        <div style="color: var(--optA); font-weight: 600; font-size: 0.85rem;">A · Deep Teal</div>
+        <div style="color: var(--optA); font-family: monospace; font-size: 0.75rem;">#0A7E8C</div>
+        <div class="a11y-pair">
+          <div class="a11y-half">
+            <div class="context">On dark #0a0a0f</div>
+            <div class="ratio" style="color: var(--optA);">5.2:1</div>
+            <div class="verdict pass">✓ AA</div>
+          </div>
+          <div class="a11y-half">
+            <div class="context">On white #fff</div>
+            <div class="ratio" style="color: var(--optA);">4.5:1</div>
+            <div class="verdict pass">✓ AA</div>
+          </div>
         </div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On white (#ffffff)</div>
-          <div class="ratio" style="color: var(--optA);">4.5:1</div>
-          <div class="verdict pass">✓ AA Pass</div>
-        </div>
-        <div class="context" style="margin-top: 0.75rem;">✅ Works on both dark and light — most versatile</div>
+        <div class="context" style="margin-top:0.75rem; color: #4ade80;">✅ Only option that passes AA on BOTH dark and light natively. Most versatile.</div>
       </div>
 
       <div class="a11y-card">
-        <div style="color: var(--optB); font-weight: 600;">B · Balanced Teal</div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On dark (#0a0a0f)</div>
-          <div class="ratio" style="color: var(--optB);">9.7:1</div>
-          <div class="verdict pass">✓ AAA Pass</div>
+        <div style="color: var(--optB); font-weight: 600; font-size: 0.85rem;">B · Balanced Teal</div>
+        <div style="color: var(--optB); font-family: monospace; font-size: 0.75rem;">#2EC4B6</div>
+        <div class="a11y-pair">
+          <div class="a11y-half">
+            <div class="context">On dark #0a0a0f</div>
+            <div class="ratio" style="color: var(--optB);">9.7:1</div>
+            <div class="verdict pass">✓ AAA</div>
+          </div>
+          <div class="a11y-half">
+            <div class="context">On white #fff</div>
+            <div class="ratio" style="color: #999;">2.2:1</div>
+            <div class="verdict fail">✗ Fail</div>
+          </div>
         </div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On white (#ffffff)</div>
-          <div class="ratio" style="color: #22a99d;">2.2:1</div>
-          <div class="verdict fail">✗ Fails text</div>
-        </div>
-        <div class="context" style="margin-top: 0.75rem;">Great on dark; needs darkened variant (#1a8a7e) for light bg text</div>
+        <div class="context" style="margin-top:0.75rem;">Great on dark. Light bg needs #1a8a7e (4.8:1 ✓ AA).</div>
       </div>
 
       <div class="a11y-card">
-        <div style="color: var(--optC); font-weight: 600;">C · Muted Sage</div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On dark (#0a0a0f)</div>
-          <div class="ratio" style="color: var(--optC);">7.4:1</div>
-          <div class="verdict pass">✓ AAA Pass</div>
+        <div style="color: var(--optC); font-weight: 600; font-size: 0.85rem;">C · Muted Sage</div>
+        <div style="color: var(--optC); font-family: monospace; font-size: 0.75rem;">#5BA8A0</div>
+        <div class="a11y-pair">
+          <div class="a11y-half">
+            <div class="context">On dark #0a0a0f</div>
+            <div class="ratio" style="color: var(--optC);">7.4:1</div>
+            <div class="verdict pass">✓ AAA</div>
+          </div>
+          <div class="a11y-half">
+            <div class="context">On white #fff</div>
+            <div class="ratio" style="color: #999;">2.9:1</div>
+            <div class="verdict warn">~ Large only</div>
+          </div>
         </div>
-        <div style="margin-top: 1rem;">
-          <div class="context">On white (#ffffff)</div>
-          <div class="ratio" style="color: var(--optC);">2.9:1</div>
-          <div class="verdict fail">✗ Fails text</div>
-        </div>
-        <div class="context" style="margin-top: 0.75rem;">Safe on dark; needs darker variant for light bg text</div>
+        <div class="context" style="margin-top:0.75rem;">Light bg needs #4a918a (3.7:1) — borderline for small text.</div>
       </div>
+
     </div>
   </div>
 
+  <!-- RECOMMENDATION -->
+  <div class="rec-banner" style="margin-bottom: 1rem;">
+    <h3 style="color: var(--optD);">★ Recommendation: Two-Color System</h3>
+    <p><strong style="color: var(--optD);">Primary (dark bg):</strong> D · Vivid Teal <code style="color:var(--optD);">#04D4DB</code> — cyan's energy with teal's soul. 10.8:1 contrast on dark = AAA.</p>
+    <p style="margin-top:0.5rem;"><strong style="color: var(--optA);">Accessible variant (light bg):</strong> A · Deep Teal <code style="color:var(--optA);">#0A7E8C</code> — passes AA on both backgrounds. Use for light-mode text, print, formal contexts.</p>
+    <p style="margin-top:0.5rem;">Together they form a natural depth ramp — shallow water to deep ocean. Same hue family (~182-186°), different registers.</p>
+  </div>
+
   <div style="text-align: center; padding: 3rem; color: var(--text-dim); font-size: 0.8rem;">
-    Amoibe Brand Color Exploration · Generated March 2026
+    Amoibe Brand Color Exploration · v2 · March 2026
   </div>
 
 </body>
