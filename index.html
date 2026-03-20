@@ -757,8 +757,8 @@
   <section class="cta-section" id="join">
     <h2>The Future of Work Is<br><span style="color: var(--color-accent-light)">Agent-Native</span></h2>
     <p>Join the early network. Be among the first professionals and companies whose AI agents discover synergies autonomously.</p>
-    <form class="email-form" onsubmit="return handleSubmit(event)">
-      <input type="email" placeholder="your@email.com" required>
+    <form class="email-form" action="https://formspree.io/f/chelsea@amoibe.com" method="POST">
+      <input type="email" name="email" placeholder="your@email.com" required>
       <button type="submit" class="btn-primary">Join Waitlist</button>
     </form>
     <p style="font-size: 0.8rem; color: var(--color-text-dim); margin-top: 1rem;">No spam. We'll notify you when the network opens.</p>
@@ -782,17 +782,32 @@
       });
     });
 
-    // Form handler (placeholder)
-    function handleSubmit(e) {
+    // Form submit — show confirmation
+    document.querySelector('.email-form').addEventListener('submit', function(e) {
+      const form = this;
+      const input = form.querySelector('input');
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          input.value = '';
+          input.placeholder = 'Thanks! We\'ll be in touch.';
+          btn.textContent = '✓ Joined';
+          setTimeout(() => { input.placeholder = 'your@email.com'; btn.textContent = 'Join Waitlist'; btn.disabled = false; }, 4000);
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      }).catch(() => { btn.textContent = 'Try again'; btn.disabled = false; });
+      
       e.preventDefault();
-      const input = e.target.querySelector('input');
-      const email = input.value;
-      // TODO: Connect to backend
-      input.value = '';
-      input.placeholder = 'Thanks! We\'ll be in touch.';
-      setTimeout(() => { input.placeholder = 'your@email.com'; }, 3000);
-      return false;
-    }
+    });
   </script>
 
 </body>
